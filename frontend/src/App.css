@@ -1,0 +1,331 @@
+.homePageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 100vh;
+}
+
+.formWrapper {
+  background: #282a36;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+.formWrapper1 {
+  background: #282a36;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  max-width: 90%;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+footer a {
+  color: #4aee88;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainLabel {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.homePageLogo {
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+.inputBox {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-bottom: 14px;
+  background: #eee;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.btnseparator{
+  margin: 15px;
+}
+.joinBtn,
+.leaveBtn {
+  background: #4aed88;
+  width: 100px;
+  margin-left: auto;
+}
+
+.joinBtn:hover,
+.leaveBtn:hover {
+  background: #2b824c;
+}
+
+.createInfo {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.createNewBtn {
+  color: #4aed88;
+  text-decoration: none;
+  border-bottom: 1px solid #4aed88;
+  transition: all 0.3s ease-in-out;
+}
+
+.createNewBtn:hover,
+footer a:hover {
+  color: #368654;
+  border-color: #368654;
+}
+
+.mainWrap {
+  display: grid;
+  /* grid-template-columns: 230px 1fr; */
+  grid-template-columns: 230px 1fr 270px;
+  height: 100vh;
+}
+
+.aside {
+  background: #1c1e29;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.asideInner {
+  flex: 1;
+}
+
+.clientsList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+}
+.userName {
+  margin-top: 10px;
+}
+
+.logo {
+  border-bottom: 1px solid #424242;
+  padding-bottom: 10px;
+}
+
+.logoImage {
+  height: 60px;
+}
+
+.leaveBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+.CodeMirror {
+  min-height: calc(100vh - 20px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+}
+
+
+
+
+/* App.css */
+
+.file-dashboard {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  /* position: relative;   added thi */
+}
+
+.file-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.file-input input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  flex-grow: 1;
+}
+
+.file-input button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-input button:hover {
+  background-color: #45a049;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.file-name-btn{
+  padding: 8px 15px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.file-name-button:hover {
+  background-color: #0b7dda;
+}
+/* .file-row span {
+  flex-grow: 1;
+} */
+
+.delete-btn {
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+
+
+
+
+
+/* App.css */
+
+/* ... (existing styles) */
+
+/* .logout-container {
+  margin-top: 20px;
+} */
+
+/* App.css */
+
+/* ... (existing styles) */
+
+.logout-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.logout-button {
+  padding: 8px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Assuming you have already imported the Dracula theme for CodeMirror */
+
+/* Add styling for the third column */
+div.mainWrap > div:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  width:max-content;
+}
+
+/* Styling for text areas */
+.dracula-textarea {
+  resize: none;
+  width: 220px;
+  height: 300px;
+  padding: 10px;
+  background-color: #282a36;
+  color: #f8f8f2;
+  border: 1px solid #44475a;
+}
+
+/* Styling for buttons */
+.dracula-btn {
+  padding: 10px;
+  background-color: #50fa7b;
+  color: #282a36;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px; /* Add margin between buttons */
+  /* width: 100%; */
+}
+
+.dracula-btn:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.dracula-btn:hover {
+  background-color: #8be9fd;
+}
+
