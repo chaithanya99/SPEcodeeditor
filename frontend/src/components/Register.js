@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { BACKEND_URL } from '../utils/constants';
 const Register = () => {
     const navigate= useNavigate();
     const [email,setEmail]= useState("")
@@ -18,7 +19,7 @@ const Register = () => {
             toast.error("Fill all the details");
             return ;
         }
-        const user=await axios.post("http://localhost:5001/createuser/",{
+        const user=await axios.post(BACKEND_URL+"/createuser/",{
             name,
             email,
             password,

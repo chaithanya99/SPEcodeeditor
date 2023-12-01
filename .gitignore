@@ -21,3 +21,7 @@ yarn-error.log*
 /frontend/.pnp.js
 /backend/.pnp.js
 /backend/.pnp
+/coderunner/node_modules
+/coderunner/inputs
+/coderunner/outputs
+/coderunner/codes

@@ -7,17 +7,22 @@ const User = require('./models/User')
 const File= require('./models/File')
 const jwt=require('jsonwebtoken')
 const {v4: uuid}= require('uuid')
+// const MONGODBURL=require('./utils/constants')
+require('dotenv').config()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
-mongoose.connect('mongodb://localhost:27017/code',{useNewUrlParser:true,useUnifiedTopology: true})
+const MONGODBURL=process.env.MONGODB
+console.log(MONGODBURL)
+mongoose.connect(MONGODBURL+'/code',{useNewUrlParser:true,useUnifiedTopology: true})
 .then(()=>{console.log( "connecting to the database")})
 .catch(()=>{console.log( "not able to connect to the database")})
 
 
-// const PORT= 5000
+const PORT= process.env.PORT
 // const usermap={};
-const server=app.listen(5001,(err)=>{
+console.log(PORT)
+const server=app.listen(PORT,(err)=>{
     if(!err)
         console.log(`listening on port `)
     else{
@@ -236,5 +241,27 @@ app.get("/checkfile",async (req,res)=>{
     }
     catch(err){
         res.json({status:'error'});
+    }
+})
+
+app.post("/savefile",async (req,res)=>{
+    const token=req.headers['x-access-token'];
+    const file_id=req.body.fileId;
+    const code=req.body.code;
+    console.log(token);
+    try{
+        const decoded=jwt.verify(token,"secrettext");
+        const email=decoded.email;
+        const u=await User.findOne({email});
+        if(!u){
+            res.json({status:'error'});
+        }
+        const f1=await File.findOne({url:file_id});
+        await f1.updateContent(code);
+        res.json({status:'ok'});
+    }
+    catch(err){
+        res.json({status:'error',error:err});
+        return ;
     }
 })

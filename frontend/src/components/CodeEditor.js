@@ -4,7 +4,6 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/clike/clike';
 import 'codemirror/theme/dracula.css';
 import 'codemirror/addon/edit/closebrackets';
-// import {fromTextArea} from 'codemirror'
 const CodeEditor = ({startcode,updatecode}) => {
     const textareaRef= useRef(null);
     const mirrorInstanceRef=useRef(null);
@@ -24,26 +23,33 @@ const CodeEditor = ({startcode,updatecode}) => {
               matchBrackets: true,
           }
           )
-        //   mirrorInstanceRef.current.setValue(startcode);
-        // mirrorInstanceRef.current.on('change', (editor, changeObj) => {
-        //   // Handle the CodeMirror editor change
-        //   updatecode(editor.getValue());
-        // });
+          mirrorInstanceRef.current.setValue(startcode);
     }
     return () => {
       if (mirrorInstanceRef.current) {
         mirrorInstanceRef.current.toTextArea();
       }
     };
-    // start();
-  },[startcode,updatecode])
-  // useEffect(()=>{
-  //   mirrorInstanceRef.current.setValue(startcode);
-  //   mirrorInstanceRef.current.on('change', (editor, changeObj) => {
-  //     // Handle the CodeMirror editor change
-  //     updatecode(editor.getValue());
-  //   });
-  // },[startcode,updatecode])
+  },[startcode])
+
+
+  useEffect(() => {
+    const handleChange = (editor, changeObj) => {
+      // Handle the CodeMirror editor change
+      updatecode(editor.getValue());
+    };
+
+    if (mirrorInstanceRef.current) {
+      mirrorInstanceRef.current.on('change', handleChange);
+    }
+
+    return () => {
+      if (mirrorInstanceRef.current) {
+        mirrorInstanceRef.current.off('change', handleChange);
+      }
+    };
+  }, [updatecode]);
+
   return (
     <textarea ref={textareaRef} id="codeeditor" ></textarea>
   );

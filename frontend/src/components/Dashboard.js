@@ -1,4 +1,4 @@
-
+import {BACKEND_URL} from '../utils/constants'
 import React, { useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,8 +10,7 @@ const Dashboard = () => {
     const [newFileName, setNewFileName] = useState('');
     const handleAddFile=(e)=>{
       async function addFile(){
-        // console.log(localStorage.getItem('token'))
-        const addFile=await axios.post("http://localhost:5001/addfile",{
+        const addFile=await axios.post(BACKEND_URL+"/addfile",{
 
           filename: newFileName
         },
@@ -37,10 +36,8 @@ const Dashboard = () => {
 
     }
     const handleDeleteFile=(file)=>{
-      // console.log("deleting");
-      // console.log(file)
       async function deleteFile(){
-        const deleteFile=await axios.delete("http://localhost:5001/deletefile",
+        const deleteFile=await axios.delete(BACKEND_URL+"/deletefile",
         {
           data: {
   
@@ -67,12 +64,11 @@ const Dashboard = () => {
     async function checking(){
       if(token){
          
-         const check=await axios.get("http://localhost:5001/token",{
+         const check=await axios.get(BACKEND_URL+"/token",{
           headers: {
             'x-access-token': localStorage.getItem('token'),
           },
          })
-        //  console.log(check)
          if(check.data['status']==="error"){
           localStorage.removeItem('token');
           navigate("/login");

@@ -2,12 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
+import { BACKEND_URL } from '../utils/constants';
 const FileRow = ({ fileName, onDelete }) => {
     const navigate = useNavigate();
     const clickFile=()=>{
         async function goToeditor(){
-            const output=await axios.get("http://localhost:5001/getcode",
+            const output=await axios.get(BACKEND_URL+"/getcode",
             {
                 params:{
                     filename: fileName

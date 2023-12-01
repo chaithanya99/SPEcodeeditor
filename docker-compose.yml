@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+
+  api:
+    build: ./backend/
+    ports:
+      - 5001:5001
+    environment:
+      PORT: 5001
+      MONGODB: mongodb://mongo_db:27017
+    depends_on:
+      - mongo_db
+
+  code-runner:
+    build: ./coderunner/
+    ports:
+      - 5005:5005
+
+  
+  front_end:
+    build: ./frontend/
+    ports:
+      - 3000:3000
+    
+    depends_on:
+      - mongo_db
+      - api
+      - code-runner
+
+
+volumes:
+  mongo_db: {}

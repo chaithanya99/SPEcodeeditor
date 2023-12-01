@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/constants';
 
 const Login = () => {
     const [email,setEmail]=useState('');
@@ -15,7 +16,8 @@ const Login = () => {
             toast.error("Fill all the details")
             return ;
         }
-        const user= await axios.post("http://localhost:5001/login",{
+        console.log(BACKEND_URL)
+        const user= await axios.post(BACKEND_URL+"/login",{
             email,
             password
         })
