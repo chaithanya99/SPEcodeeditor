@@ -9,7 +9,8 @@ services:
       - mongo_db:/data/db
 
   api:
-    build: ./backend/
+    image: chaithanya970/codeeditor:backend
+    container_name: codeeditor-backend
     ports:
       - 5001:5001
     environment:
@@ -19,13 +20,15 @@ services:
       - mongo_db
 
   code-runner:
-    build: ./coderunner/
+    image: chaithanya970/codeeditor:coderunner
+    container_name: codeeditor-coderunner
     ports:
       - 5005:5005
 
   
   front_end:
-    build: ./frontend/
+    image: chaithanya970/codeeditor:frontend
+    container_name: codeeditor-front_end
     ports:
       - 3000:3000
     
