@@ -1,31 +1,44 @@
 # Getting started
+To get started with this project, follow these steps:
+1. Fork this repository
 
-`git clone https://github.com/chaithanya99/SPEcodeeditor.git`
+2. Clone this repository to your local machine:
 
-`cd SPEcodeeditor`
+   
+```bash 
+git clone https://github.com/chaithanya99/SPEcodeeditor.git
+```
 
-## Setup Backend
-- start mongodb
+3. Install the required dependencies for backend, coderunner and frontend:
 
-`cd backend`
+```bash
+cd SPEcodeeditor
+cd coderunner && npm install
+cd ../backend && npm install
+cd ../frontend && npm install
+```
 
-`npm install`
+4. Configure the local MongoDB server.
 
-`npm start`
+5. Start the coderunner server:
 
-## Setup Coderunner
-`cd coderunner`
+```bash
+cd coderunner && npm start
+```
 
-`npm install`
+6. Start the backend server:
 
-`npm start`
+```bash
+cd backend && npm start
+```
 
-## Setup Frontend
-`cd frontend`
+7. Start the frontend server:
 
-`npm install`
+```bash
+cd frontend && npm start
+```
 
-`npm start`
+8. Access the application in your web browser at [http://localhost:3000](http://localhost:3000)
 
 
 
