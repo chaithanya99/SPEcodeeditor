@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../utils/constants';
+import { validation } from '../utils/validation';
 
 const Login = () => {
     const [email,setEmail]=useState('');
@@ -15,6 +16,11 @@ const Login = () => {
         if(email==="" || password===""){
             toast.error("Fill all the details")
             return ;
+        }
+        const valid=validation(email,password);
+        if(valid){
+            toast.error(valid);
+            return;
         }
         console.log(BACKEND_URL)
         const user= await axios.post(BACKEND_URL+"/login",{

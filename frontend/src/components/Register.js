@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { BACKEND_URL } from '../utils/constants';
+import { validation } from '../utils/validation';
 const Register = () => {
     const navigate= useNavigate();
     const [email,setEmail]= useState("")
@@ -18,6 +19,11 @@ const Register = () => {
         if(name==="" || email==="" || password===""){
             toast.error("Fill all the details");
             return ;
+        }
+        const valid=validation(email,password);
+        if(valid){
+            toast.error(valid);
+            return;
         }
         const user=await axios.post(BACKEND_URL+"/createuser/",{
             name,
