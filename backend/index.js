@@ -2,6 +2,10 @@ const express=require('express')
 const app=express()
 const mongoose=require('mongoose')
 const cors=require('cors')
+const morgan=require('morgan')
+const path = require('path')
+const fs=require('fs')
+const logFile=fs.createWriteStream(path.join(__dirname,'access.log'),{flags:'a'})
 const createuserRouter=require('./controllers/createuser')
 const loginRouter=require('./controllers/login')
 const tokenRouter = require('./controllers/token')
@@ -21,6 +25,12 @@ mongoose.connect(MONGODBURL+'/code',{useNewUrlParser:true,useUnifiedTopology: tr
 .catch(()=>{console.log( "not able to connect to the database")})
 
 
+morgan.token('data', request => {
+	if (request.body.password)
+		request.body.password = ''
+	return JSON.stringify(request.body)
+})
+
 const PORT= process.env.PORT
 console.log(PORT)
 const server=app.listen(PORT,(err)=>{
@@ -36,6 +46,7 @@ const server=app.listen(PORT,(err)=>{
 app.get("/",(req,res)=>{
     res.send("hil")
 })
+app.use(morgan(':date[web] :method :url :status :res[content-length] - :response-time ms :data',{stream: logFile}))
 
 app.use('/createuser',createuserRouter)
 app.use('/login',loginRouter)
