@@ -66,7 +66,7 @@ pipeline{
                 // sh "docker push chaithanya970/codeeditor:frontend"
                 // sh "docker push chaithanya970/codeeditor:coderunner"
                 script {
-                    docker.withRegistry('', docker_token) {
+                    docker.withRegistry('', 'DockerHub') {
                         backend_img.push()
                         frontend_img.push()
                         coderunner_img.push()
