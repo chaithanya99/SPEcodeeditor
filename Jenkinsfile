@@ -50,7 +50,7 @@ pipeline{
         stage("Build coderunner docker image"){
             steps{
                 // sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
-                coderunner_img = docker.build('chaithanya970/codeeditor:coderunner' './coderunner/')
+                coderunner_img = docker.build('chaithanya970/codeeditor:coderunner', './coderunner/')
             }
         }
         
