@@ -12,7 +12,7 @@ pipeline{
             steps{
                 sh '''
                     cd frontend
-                    npm ci
+                    npm install
                     npm run test
                 '''
             }
@@ -22,7 +22,7 @@ pipeline{
             steps{
                 sh '''
                     cd backend
-                    npm ci
+                    npm install
                     npm run test
                 '''
             }
