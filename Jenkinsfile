@@ -1,5 +1,5 @@
 pipeline{
-    enviroment {
+    environment {
         backend_img = ""
         frontend_img = ""
         coderunner_img = ""
