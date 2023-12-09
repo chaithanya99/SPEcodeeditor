@@ -10,11 +10,21 @@ pipeline{
 
         stage("Running React Tests"){
             steps{
-                sh ```
+                sh '''
                     cd frontend
                     npm ci
                     npm run test
-                ```
+                '''
+            }
+        }
+
+        stage("Running backend Tests"){
+            steps{
+                sh '''
+                    cd backend
+                    npm ci
+                    npm run test
+                '''
             }
         }
 
