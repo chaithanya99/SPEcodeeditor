@@ -35,22 +35,28 @@ pipeline{
 
         stage("Build backend docker image"){
             steps{
-                // sh "docker build -t chaithanya970/codeeditor:backend backend/"
-                backend_img = docker.build('chaithanya970/codeeditor:backend', './backend/')
+                script {
+                    // sh "docker build -t chaithanya970/codeeditor:backend backend/"
+                    backend_img = docker.build('chaithanya970/codeeditor:backend', './backend/')
+                }
             }
         }
 
         stage("Build frontend docker image"){
             steps{
-                // sh "docker build -t chaithanya970/codeeditor:frontend frontend/"
-                frontend_img = docker.build('chaithanya970/codeeditor:frontend', './frontend/')
+                script {
+                    // sh "docker build -t chaithanya970/codeeditor:frontend frontend/"
+                    frontend_img = docker.build('chaithanya970/codeeditor:frontend', './frontend/')
+                }
             }
         }
 
         stage("Build coderunner docker image"){
             steps{
-                // sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
-                coderunner_img = docker.build('chaithanya970/codeeditor:coderunner', './coderunner/')
+                script {
+                    // sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
+                    coderunner_img = docker.build('chaithanya970/codeeditor:coderunner', './coderunner/')
+                }
             }
         }
         
