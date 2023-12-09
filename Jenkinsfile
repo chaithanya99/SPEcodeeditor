@@ -1,4 +1,9 @@
 pipeline{
+    enviroment {
+        backend_img = ""
+        frontend_img = ""
+        coderunner_img = ""
+    }
     agent any
     stages{
         stage("Git clone"){
@@ -30,27 +35,37 @@ pipeline{
 
         stage("Build backend docker image"){
             steps{
-                sh "docker build -t chaithanya970/codeeditor:backend backend/"
+                // sh "docker build -t chaithanya970/codeeditor:backend backend/"
+                backend_img = docker.build('chaithanya970/codeeditor:backend', './backend/')
             }
         }
 
         stage("Build frontend docker image"){
             steps{
-                sh "docker build -t chaithanya970/codeeditor:frontend frontend/"
+                // sh "docker build -t chaithanya970/codeeditor:frontend frontend/"
+                frontend_img = docker.build('chaithanya970/codeeditor:frontend', './frontend/')
             }
         }
 
         stage("Build coderunner docker image"){
             steps{
-                sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
+                // sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
+                coderunner_img = docker.build('chaithanya970/codeeditor:coderunner' './coderunner/')
             }
         }
         
         stage("Pushing docker images"){
             steps{
-                sh "docker push chaithanya970/codeeditor:backend"
-                sh "docker push chaithanya970/codeeditor:frontend"
-                sh "docker push chaithanya970/codeeditor:coderunner"
+                // sh "docker push chaithanya970/codeeditor:backend"
+                // sh "docker push chaithanya970/codeeditor:frontend"
+                // sh "docker push chaithanya970/codeeditor:coderunner"
+                script {
+                    docker.withRegistry('', docker_token) {
+                        backend_img.push()
+                        frontend_img.push()
+                        coderunner_img.push()
+                    }
+                }
             }
         }
         // add ansible 
