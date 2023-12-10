@@ -1,9 +1,4 @@
 pipeline{
-    environment {
-        backend_img = ""
-        frontend_img = ""
-        coderunner_img = ""
-    }
     agent any
     stages{
         stage("Git clone"){
@@ -36,7 +31,6 @@ pipeline{
         stage("Build backend docker image"){
             steps{
                 script {
-                    // sh "docker build -t chaithanya970/codeeditor:backend backend/"
                     backend_img = docker.build('chaithanya970/codeeditor:backend', './backend/')
                 }
             }
@@ -45,7 +39,6 @@ pipeline{
         stage("Build frontend docker image"){
             steps{
                 script {
-                    // sh "docker build -t chaithanya970/codeeditor:frontend frontend/"
                     frontend_img = docker.build('chaithanya970/codeeditor:frontend', './frontend/')
                 }
             }
@@ -54,7 +47,6 @@ pipeline{
         stage("Build coderunner docker image"){
             steps{
                 script {
-                    // sh "docker build -t chaithanya970/codeeditor:coderunner coderunner/"
                     coderunner_img = docker.build('chaithanya970/codeeditor:coderunner', './coderunner/')
                 }
             }
@@ -62,9 +54,6 @@ pipeline{
         
         stage("Pushing docker images"){
             steps{
-                // sh "docker push chaithanya970/codeeditor:backend"
-                // sh "docker push chaithanya970/codeeditor:frontend"
-                // sh "docker push chaithanya970/codeeditor:coderunner"
                 script {
                     docker.withRegistry('', 'Dockerhub') {
                         backend_img.push()
