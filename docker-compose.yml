@@ -19,7 +19,7 @@ services:
     depends_on:
       - mongo_db
     volumes:
-      - ./backend/access.log:/usr/src/app/access.log
+      - ./access.log:/usr/src/app/access.log
 
   code-runner:
     image: chaithanya970/codeeditor:coderunner

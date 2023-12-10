@@ -3,11 +3,39 @@
   hosts: all
   vars:
   tasks:
-    - name: Get username of target machine
-      command: whoami
-      register: user 
-
     - name: Copy docker-compose file
       copy:
         src: ../docker-compose.yml
-        dest: /home/{{user.stdout}}/Desktop/Code-Editor/
+        dest: ~/Desktop/Code-Editor/
+
+    - name: Check if log file exists
+      command: ls ~/Desktop/Code-Editor/access.log
+      register: file_check
+      ignore_errors: yes
+
+    - name: Create log file if not existing
+      file:
+        path: ~/Desktop/Code-Editor/access.log
+        state: touch
+      when: file_check is failed
+
+    - name: Stop running containers
+      command: docker stop codeeditor-backend db_container codeeditor-coderunner codeeditor-front_end
+      ignore_errors: yes
+
+    - name: Remove existing containers
+      command: docker rm codeeditor-backend db_container codeeditor-coderunner codeeditor-front_end
+      ignore_errors: yes
+
+    - name: Docker-compose Pull
+      command: docker compose pull
+      args:
+        chdir: ~/Desktop/Code-Editor
+
+    - name: Prune old images
+      command: docker image prune -f
+
+    - name: Run Docker containers
+      command: docker compose up -d
+      args:
+        chdir: ~/Desktop/Code-Editor
