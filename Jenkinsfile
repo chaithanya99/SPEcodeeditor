@@ -74,7 +74,11 @@ pipeline{
                 }
             }
         }
-        // add ansible 
+        // stage("Ansible Deployment") {
+        //     steps {
+
+        //     }
+        // }
     }
     
 }

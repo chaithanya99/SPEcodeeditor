@@ -1,0 +1,13 @@
+---
+- name: Deploying Code-Editor application
+  hosts: all
+  vars:
+  tasks:
+    - name: Get username of target machine
+      command: whoami
+      register: user 
+
+    - name: Copy docker-compose file
+      copy:
+        src: ../docker-compose.yml
+        dest: /home/{{user.stdout}}/Desktop/Code-Editor/
