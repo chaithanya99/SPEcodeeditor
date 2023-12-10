@@ -13,7 +13,7 @@ const Editor = () => {
     const [outputdata,setOutputdata]=useState('');
     const id=useRef(null);
     const navigate=useNavigate();
-    const [clients,setClients]=useState([{username: "hello",socketId:1},{username: "chaithanya reddy",socketId:2},{username:"krushikar",socketId:3}]);
+    const [clients,setClients]=useState([{username: "hello",socketId:1},{username: "chaithanya reddy",socketId:2},{username:"Meda Madhav",socketId:3}]);
     useEffect(()=>{
         const currLocation=window.location.pathname;
     
