@@ -17,13 +17,7 @@
       file:
         path: ~/Desktop/Code-Editor/access.log
         state: touch
-      when: file_check is failed
-
-    - name: Start Docker service
-      service:
-        name: docker
-        status: started
-      
+      when: file_check is failed      
 
     - name: Stop running containers
       command: docker stop codeeditor-backend db_container codeeditor-coderunner codeeditor-front_end
