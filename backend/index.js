@@ -46,7 +46,7 @@ const server=app.listen(PORT,(err)=>{
 app.get("/",(req,res)=>{
     res.send("hil")
 })
-app.use(morgan(':date[web] :method :url :status :res[content-length] - :response-time ms :data',{stream: logFile}))
+app.use(morgan(':date[iso] :method :url :status - :response-time ms :data',{stream: logFile}))
 
 app.use('/createuser',createuserRouter)
 app.use('/login',loginRouter)
