@@ -19,6 +19,12 @@
         state: touch
       when: file_check is failed
 
+    - name: Start Docker service
+      service:
+        name: docker
+        status: started
+      
+
     - name: Stop running containers
       command: docker stop codeeditor-backend db_container codeeditor-coderunner codeeditor-front_end
       ignore_errors: yes
